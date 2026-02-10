@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - SmartCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">♡</div>
+                SmartCare
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" onclick="showDashboardSection('patient-overview')">
+                    <span class="menu-icon">📊</span>
+                    <span>Dashboard</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('patient-book')">
+                    <span class="menu-icon">📅</span>
+                    <span>Book Appointment</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('patient-appointments')">
+                    <span class="menu-icon">📋</span>
+                    <span>My Appointments</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('patient-history')">
+                    <span class="menu-icon">🕐</span>
+                    <span>Appointment History</span>
+                </a></li>
+                <li><a href="#" onclick="logout()">
+                    <span class="menu-icon">🚪</span>
+                    <span>Logout</span>
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <h1>Patient Dashboard</h1>
+                <div class="user-info">
+                    <div>
+                        <div style="font-weight: 600; color: var(--gray-900);">John Doe</div>
+                        <div style="font-size: 0.875rem; color: var(--gray-500);">Patient ID: PAT-2024-001</div>
+                    </div>
+                    <div class="user-avatar">JD</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Overview Section -->
+            <div id="patient-overview" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">📅</div>
+                        <div class="stat-card-value">3</div>
+                        <div class="stat-card-label">Upcoming Appointments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">✅</div>
+                        <div class="stat-card-value">12</div>
+                        <div class="stat-card-label">Completed Visits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">⏰</div>
+                        <div class="stat-card-value">1</div>
+                        <div class="stat-card-label">Pending Confirmation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">👨‍⚕️</div>
+                        <div class="stat-card-value">5</div>
+                        <div class="stat-card-label">Doctors Visited</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Upcoming Appointments</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Feb 10, 2026</td>
+                                    <td>10:00 AM</td>
+                                    <td>Dr. Ahmad Rahman</td>
+                                    <td>Cardiology</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT001')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT001')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 15, 2026</td>
+                                    <td>2:30 PM</td>
+                                    <td>Dr. Sarah Chen</td>
+                                    <td>Pediatrics</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT002')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT002')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 20, 2026</td>
+                                    <td>11:00 AM</td>
+                                    <td>Dr. Emily Wong</td>
+                                    <td>Dermatology</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT003')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT003')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Quick Actions</h2>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                        <button class="btn-primary" onclick="showDashboardSection('patient-book')" style="padding: 1rem;">
+                            📅 Book New Appointment
+                        </button>
+                        <button class="btn-secondary" onclick="showDashboardSection('patient-history')" style="padding: 1rem;">
+                            📊 View History
+                        </button>
+                        <button class="btn-secondary" onclick="window.location.href='contact.html'" style="padding: 1rem;">
+                            📧 Contact Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Appointment Section -->
+            <div id="patient-book" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>Book New Appointment</h2>
+                    <div id="bookingAlertBox" class="alert"></div>
+                    <form id="bookingForm" onsubmit="handleBooking(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookDepartment">Department *</label>
+                                <select id="bookDepartment" required onchange="loadDoctors()">
+                                    <option value="">Select department</option>
+                                    <option value="cardiology">Cardiology</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                    <option value="orthopedics">Orthopedics</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="neurology">Neurology</option>
+                                    <option value="gynecology">Gynecology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookDoctor">Doctor *</label>
+                                <select id="bookDoctor" required>
+                                    <option value="">Select doctor first</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookDate">Appointment Date *</label>
+                                <input type="date" id="bookDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookTime">Appointment Time *</label>
+                                <select id="bookTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="09:30">09:30 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="14:30">02:30 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="15:30">03:30 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="16:30">04:30 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookReason">Reason for Visit *</label>
+                            <textarea id="bookReason" rows="4" required placeholder="Please describe your symptoms or reason for appointment"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Appointments Section -->
+            <div id="patient-appointments" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>My Appointments</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Appointment ID</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#APT001</td>
+                                    <td>Feb 10, 2026</td>
+                                    <td>10:00 AM</td>
+                                    <td>Dr. Ahmad Rahman</td>
+                                    <td>Cardiology</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT001')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT001')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#APT002</td>
+                                    <td>Feb 15, 2026</td>
+                                    <td>2:30 PM</td>
+                                    <td>Dr. Sarah Chen</td>
+                                    <td>Pediatrics</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT002')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT002')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#APT003</td>
+                                    <td>Feb 20, 2026</td>
+                                    <td>11:00 AM</td>
+                                    <td>Dr. Emily Wong</td>
+                                    <td>Dermatology</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT003')">View</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT003')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointment History Section -->
+            <div id="patient-history" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>Appointment History</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Appointment ID</th>
+                                    <th>Date</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#APT098</td>
+                                    <td>Jan 20, 2026</td>
+                                    <td>Dr. Ahmad Rahman</td>
+                                    <td>Cardiology</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                    <td><button class="btn-action btn-view" onclick="viewAppointmentDetails('APT098')">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#APT097</td>
+                                    <td>Jan 15, 2026</td>
+                                    <td>Dr. Raj Kumar</td>
+                                    <td>Orthopedics</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                    <td><button class="btn-action btn-view" onclick="viewAppointmentDetails('APT097')">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#APT096</td>
+                                    <td>Dec 28, 2025</td>
+                                    <td>Dr. Emily Wong</td>
+                                    <td>Dermatology</td>
+                                    <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                    <td><button class="btn-action btn-view" onclick="viewAppointmentDetails('APT096')">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#APT095</td>
+                                    <td>Dec 15, 2025</td>
+                                    <td>Dr. Michael Lee</td>
+                                    <td>Neurology</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                    <td><button class="btn-action btn-view" onclick="viewAppointmentDetails('APT095')">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#APT094</td>
+                                    <td>Dec 05, 2025</td>
+                                    <td>Dr. Sarah Chen</td>
+                                    <td>Pediatrics</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                    <td><button class="btn-action btn-view" onclick="viewAppointmentDetails('APT094')">View Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - SmartCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">♡</div>
+                SmartCare
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" onclick="showDashboardSection('doctor-overview')">
+                    <span class="menu-icon">📊</span>
+                    <span>Dashboard</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('doctor-appointments')">
+                    <span class="menu-icon">📋</span>
+                    <span>Manage Appointments</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('doctor-schedule')">
+                    <span class="menu-icon">📅</span>
+                    <span>My Schedule</span>
+                </a></li>
+                <li><a href="#" onclick="showDashboardSection('doctor-patients')">
+                    <span class="menu-icon">👥</span>
+                    <span>Patients</span>
+                </a></li>
+                <li><a href="#" onclick="logout()">
+                    <span class="menu-icon">🚪</span>
+                    <span>Logout</span>
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <h1>Doctor Dashboard</h1>
+                <div class="user-info">
+                    <div>
+                        <div style="font-weight: 600; color: var(--gray-900);">Dr. Ahmad Rahman</div>
+                        <div style="font-size: 0.875rem; color: var(--gray-500);">Cardiologist</div>
+                    </div>
+                    <div class="user-avatar">AR</div>
+                </div>
+            </div>
+
+            <!-- Doctor Overview Section -->
+            <div id="doctor-overview" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">📅</div>
+                        <div class="stat-card-value">8</div>
+                        <div class="stat-card-label">Today's Appointments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">⏰</div>
+                        <div class="stat-card-value">3</div>
+                        <div class="stat-card-label">Pending Confirmations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">✅</div>
+                        <div class="stat-card-value">125</div>
+                        <div class="stat-card-label">Total Patients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">🕐</div>
+                        <div class="stat-card-value">5</div>
+                        <div class="stat-card-label">Remaining Today</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Today's Schedule - February 05, 2026</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Patient Name</th>
+                                    <th>Patient ID</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>09:00 AM</td>
+                                    <td>John Doe</td>
+                                    <td>PAT-2024-001</td>
+                                    <td>Routine Checkup</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT201')">View</button>
+                                            <button class="btn-action btn-edit" onclick="completeAppointment('APT201')">Complete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10:00 AM</td>
+                                    <td>Jane Smith</td>
+                                    <td>PAT-2024-045</td>
+                                    <td>Chest Pain</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT202')">View</button>
+                                            <button class="btn-action btn-edit" onclick="confirmAppointment('APT202')">Confirm</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>11:00 AM</td>
+                                    <td>Michael Chen</td>
+                                    <td>PAT-2024-078</td>
+                                    <td>Follow-up Visit</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT203')">View</button>
+                                            <button class="btn-action btn-edit" onclick="completeAppointment('APT203')">Complete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>02:00 PM</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>PAT-2024-092</td>
+                                    <td>Heart Palpitations</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT204')">View</button>
+                                            <button class="btn-action btn-edit" onclick="completeAppointment('APT204')">Complete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>03:00 PM</td>
+                                    <td>Robert Williams</td>
+                                    <td>PAT-2024-103</td>
+                                    <td>Annual Physical</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT205')">View</button>
+                                            <button class="btn-action btn-edit" onclick="confirmAppointment('APT205')">Confirm</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Quick Actions</h2>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                        <button class="btn-primary" onclick="showDashboardSection('doctor-appointments')" style="padding: 1rem;">
+                            📋 View All Appointments
+                        </button>
+                        <button class="btn-secondary" onclick="showDashboardSection('doctor-schedule')" style="padding: 1rem;">
+                            📅 Check Schedule
+                        </button>
+                        <button class="btn-secondary" onclick="showDashboardSection('doctor-patients')" style="padding: 1rem;">
+                            👥 Patient List
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Appointments Section -->
+            <div id="doctor-appointments" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>Manage Appointments</h2>
+                    <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+                        <select style="padding: 0.5rem; border: 2px solid var(--gray-300); border-radius: 8px;">
+                            <option>All Status</option>
+                            <option>Pending</option>
+                            <option>Confirmed</option>
+                            <option>Completed</option>
+                            <option>Cancelled</option>
+                        </select>
+                        <input type="date" style="padding: 0.5rem; border: 2px solid var(--gray-300); border-radius: 8px;">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Appointment ID</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Patient</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#APT201</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td>09:00 AM</td>
+                                    <td>John Doe</td>
+                                    <td>Routine Checkup</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT201')">View</button>
+                                            <button class="btn-action btn-edit" onclick="completeAppointment('APT201')">Complete</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT201')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#APT202</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td>10:00 AM</td>
+                                    <td>Jane Smith</td>
+                                    <td>Chest Pain</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT202')">View</button>
+                                            <button class="btn-action btn-edit" onclick="confirmAppointment('APT202')">Confirm</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT202')">Reject</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#APT210</td>
+                                    <td>Feb 06, 2026</td>
+                                    <td>09:30 AM</td>
+                                    <td>Emily Davis</td>
+                                    <td>Blood Pressure Check</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT210')">View</button>
+                                            <button class="btn-action btn-edit" onclick="completeAppointment('APT210')">Complete</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT210')">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#APT215</td>
+                                    <td>Feb 08, 2026</td>
+                                    <td>02:00 PM</td>
+                                    <td>David Martinez</td>
+                                    <td>Cardiac Stress Test</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-action btn-view" onclick="viewAppointmentDetails('APT215')">View</button>
+                                            <button class="btn-action btn-edit" onclick="confirmAppointment('APT215')">Confirm</button>
+                                            <button class="btn-action btn-cancel" onclick="cancelAppointment('APT215')">Reject</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Schedule Section -->
+            <div id="doctor-schedule" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>My Schedule - This Week</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Time Slots</th>
+                                    <th>Appointments</th>
+                                    <th>Available Slots</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Feb 05, 2026</td>
+                                    <td>Wednesday</td>
+                                    <td>09:00 AM - 05:00 PM</td>
+                                    <td>8 / 12</td>
+                                    <td>4</td>
+                                    <td><span class="status-badge status-confirmed">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 06, 2026</td>
+                                    <td>Thursday</td>
+                                    <td>09:00 AM - 05:00 PM</td>
+                                    <td>5 / 12</td>
+                                    <td>7</td>
+                                    <td><span class="status-badge status-confirmed">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 07, 2026</td>
+                                    <td>Friday</td>
+                                    <td>09:00 AM - 02:00 PM</td>
+                                    <td>3 / 8</td>
+                                    <td>5</td>
+                                    <td><span class="status-badge status-confirmed">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 08, 2026</td>
+                                    <td>Saturday</td>
+                                    <td>09:00 AM - 01:00 PM</td>
+                                    <td>2 / 6</td>
+                                    <td>4</td>
+                                    <td><span class="status-badge status-confirmed">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 09, 2026</td>
+                                    <td>Sunday</td>
+                                    <td>-</td>
+                                    <td>0 / 0</td>
+                                    <td>-</td>
+                                    <td><span class="status-badge status-cancelled">Off</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Weekly Summary</h2>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                        <div style="padding: 1.5rem; background: var(--gray-50); border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--primary-blue);">18</div>
+                            <div style="color: var(--gray-600); margin-top: 0.5rem;">Total This Week</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--gray-50); border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-green);">12</div>
+                            <div style="color: var(--gray-600); margin-top: 0.5rem;">Completed</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--gray-50); border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--warning);">6</div>
+                            <div style="color: var(--gray-600); margin-top: 0.5rem;">Pending</div>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--gray-50); border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--gray-500);">16</div>
+                            <div style="color: var(--gray-600); margin-top: 0.5rem;">Available Slots</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patients Section -->
+            <div id="doctor-patients" class="dashboard-section" style="display: none;">
+                <div class="dashboard-card">
+                    <h2>My Patients</h2>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" placeholder="Search patients..." style="width: 100%; padding: 0.75rem; border: 2px solid var(--gray-300); border-radius: 8px;">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Last Visit</th>
+                                    <th>Next Appointment</th>
+                                    <th>Total Visits</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PAT-2024-001</td>
+                                    <td>John Doe</td>
+                                    <td>45</td>
+                                    <td>Jan 20, 2026</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td>8</td>
+                                    <td><button class="btn-action btn-view" onclick="viewPatientProfile('PAT001')">View Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PAT-2024-045</td>
+                                    <td>Jane Smith</td>
+                                    <td>38</td>
+                                    <td>Jan 15, 2026</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td>5</td>
+                                    <td><button class="btn-action btn-view" onclick="viewPatientProfile('PAT045')">View Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PAT-2024-078</td>
+                                    <td>Michael Chen</td>
+                                    <td>52</td>
+                                    <td>Jan 25, 2026</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td>12</td>
+                                    <td><button class="btn-action btn-view" onclick="viewPatientProfile('PAT078')">View Profile</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
